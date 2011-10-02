@@ -1,0 +1,16 @@
+package com.idobjects.test.company{
+	entity Employee{
+		String firstName;
+		String lastName;
+		int age;
+		Department department;
+	}
+	
+	entity Department {
+		String name;
+		List[Employee] members [inverse=department];
+		Employee boss;
+		int size;
+	}
+}
+

@@ -1,0 +1,29 @@
+package com.idobjects.test.booking{
+	
+	entity Booking{
+		String bookingNumber;
+		
+		List[Passenger] passengers;
+		List[Flight] flights;
+	}
+	
+	
+	entity Passenger{
+		String firstName;
+		String lastName;
+		
+		List[Flight] flights [inverse=passengers];
+		
+	}
+	
+	entity Flight{
+		String origin;
+		String departure;
+		
+		List[Passenger] passengers;
+	
+	}
+
+
+
+}
