@@ -1,15 +1,20 @@
 package com.idobjects.test.company;
+
+import org.jmock.Expectations;
+import org.jmock.Mockery;
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.idobjects.api.GuidObjectIdentifier;
+import com.idobjects.api.IdObject;
+import com.idobjects.api.IdObjectReference;
 import com.idobjects.api.ModelScope;
+import com.idobjects.api.ModelScopeListener;
 import com.idobjects.api.StringModelScopeIdentifier;
-import com.idobjects.test.company.Department;
-import com.idobjects.test.company.DepartmentMD;
-import com.idobjects.test.company.Employee;
 
 public class CompanyTest{
+
+    private final Mockery context = new Mockery();
 
     @Test
     public void testCreation(){
@@ -96,5 +101,42 @@ public class CompanyTest{
 
         ModelScope copy = companyModelScope.copy( new StringModelScopeIdentifier( "ModelScop3" ) );
         Assert.assertEquals( companyModelScope.size(), copy.size() );
+    }
+
+    @Test
+    public void testModelScopeListener(){
+        ModelScope companyModelScope = createCompanyModelScope();
+        final ModelScopeListener listener = context.mock( ModelScopeListener.class );
+        context.checking( new Expectations(){
+
+            {
+                exactly( 2 ).of( listener ).objectAdded( with( any( IdObject.class ) ) );
+
+            }
+        } );
+
+        companyModelScope.addModelScopeListener( listener );
+
+        final Employee employee1 = new Employee( companyModelScope, new GuidObjectIdentifier() );
+        final Department department = new Department( companyModelScope, new GuidObjectIdentifier() );
+
+        context.checking( new Expectations(){
+
+            {
+                oneOf( listener ).objectChanged( employee1 );
+                exactly( 2 ).of( listener ).referenceAdded( with( any( IdObjectReference.class ) ) );
+                exactly( 2 ).of( listener ).referenceRemoved( with( any( IdObjectReference.class ) ) );
+                one( listener ).objectRemoved( employee1 );
+            }
+        } );
+
+        employee1.setFirstName( "FirstName" );
+        employee1.setDepartment( department );
+
+        // removes also the two References from and to employee
+        companyModelScope.removeIdObject( employee1 );
+
+        context.assertIsSatisfied();
+
     }
 }
