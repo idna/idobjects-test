@@ -2,12 +2,21 @@
 			
 		package com.idobjects.test.booking;
 		
-		import java.util.Collection;
-		import java.util.List;
 		
-		import com.idobjects.api.AbstractIdObject;
-		import com.idobjects.api.ModelScope;
-		import com.idobjects.api.ObjectIdentifier;
+			import java.util.Collection;
+		
+			import java.util.List;
+		
+			import com.idobjects.api.AbstractIdObject;
+		
+			import com.idobjects.api.ModelScope;
+		
+			import com.idobjects.api.ObjectIdentifier;
+		
+			import org.joda.time.Instant;
+		
+			import org.joda.time.DateTime;
+		
 		
 		
 		public class Passenger extends AbstractIdObject {

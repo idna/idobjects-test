@@ -11,5 +11,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/com.idobjects.dsl.templates"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/idobjects-api"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="libs/joda-time-2.0.jar" sourcepath="libs/joda-time-2.0-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

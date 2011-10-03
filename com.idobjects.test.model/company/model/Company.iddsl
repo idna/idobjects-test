@@ -6,6 +6,11 @@ package com.idobjects.test.company{
 		Department department;
 	}
 	
+	entity Freelancer extends Employee{
+		DateTime startOfWork;
+		DateTime endOfWork;
+	}
+	
 	entity Department {
 		String name;
 		List[Employee] members [inverse=department];
