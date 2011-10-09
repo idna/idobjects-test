@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="booking/test"/>
-	<classpathentry kind="src" path="company/test"/>
-	<classpathentry kind="src" path="booking/model"/>
-	<classpathentry kind="src" path="company/model"/>
 	<classpathentry kind="src" path="src-gen"/>
+	<classpathentry kind="src" path="company/test"/>
+	<classpathentry kind="src" path="booking/test"/>
+	<classpathentry kind="src" path="company/model"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="src" path="booking/model"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/com.idobjects.dsl.templates"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/idobjects-api"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="libs/joda-time-2.0.jar" sourcepath="libs/joda-time-2.0-sources.jar"/>
 	<classpathentry kind="lib" path="libs/jmock-2.5.1/bsh-core-2.0b4.jar"/>
@@ -23,5 +22,9 @@
 	<classpathentry kind="lib" path="libs/jmock-2.5.1/jmock-legacy-2.5.1.jar"/>
 	<classpathentry kind="lib" path="libs/jmock-2.5.1/jmock-script-2.5.1.jar"/>
 	<classpathentry kind="lib" path="libs/jmock-2.5.1/objenesis-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.17.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/com.idobjects.dsl.templates"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/idobjects-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/idobjects-persistence-api"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
