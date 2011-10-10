@@ -1,3 +1,5 @@
+model-id = com.idobjects.test.booking.BookingModel
+
 package com.idobjects.test.booking{
 	
 	entity Booking{

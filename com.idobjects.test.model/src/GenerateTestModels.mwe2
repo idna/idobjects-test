@@ -28,8 +28,8 @@ Workflow {
 
 		
 		load = {
-			slot = "packages"
-			type = "Package"
+			slot = "model"
+			type = "Model"
 		}
 	}
 
@@ -38,7 +38,7 @@ Workflow {
 			metaModelPackage = "com.idobjects.dsl.idObjectsDsl.IdObjectsDslPackage"
 		}
 		
-		expand = "RootTemplate::main FOREACH packages"
+		expand = "RootTemplate::main FOREACH model"
 		
 		outlet = {
 			path = targetDir

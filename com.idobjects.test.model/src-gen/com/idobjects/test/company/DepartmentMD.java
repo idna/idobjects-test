@@ -78,7 +78,7 @@
 		    }
 		
 		    private DepartmentMD(){
-		        super( Department.class.getName(), PROPERTIES, REFERENCES );
+		        super( Department.class, PROPERTIES, REFERENCES );
 		    }
 		
 		}  

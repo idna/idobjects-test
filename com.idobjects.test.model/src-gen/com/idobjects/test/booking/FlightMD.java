@@ -72,7 +72,7 @@
 		    }
 		
 		    private FlightMD(){
-		        super( Flight.class.getName(), PROPERTIES, REFERENCES );
+		        super( Flight.class, PROPERTIES, REFERENCES );
 		    }
 		
 		}  
