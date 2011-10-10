@@ -31,5 +31,4 @@ public class EmployeePOMD extends PersistenceObjectMD{
     public static EmployeePOMD instance(){
         return instance;
     }
-
 }

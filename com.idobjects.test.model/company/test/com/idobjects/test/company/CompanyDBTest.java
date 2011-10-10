@@ -79,7 +79,6 @@ public class CompanyDBTest{
         employee.setLastName( "lastname" );
         
         persistenceManagerImpl.saveModelScope( modelScope );
-        
-    }
 
+    }
 }
