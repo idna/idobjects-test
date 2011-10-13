@@ -71,7 +71,6 @@ public class CompanyDBTest{
         schemaUpdate.execute( false, true );
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
-
         PersistenceManagerImpl persistenceManagerImpl = new PersistenceManagerImpl( sessionFactory, CompanyPMD.instance() );
         ModelScope modelScope = new ModelScope( new StringModelScopeIdentifier( "MS1" ) );
         Employee employee = new Employee( modelScope, new GuidObjectIdentifier() );
