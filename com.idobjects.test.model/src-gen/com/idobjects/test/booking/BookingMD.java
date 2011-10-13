@@ -72,7 +72,7 @@
 		    }
 		
 		    private BookingMD(){
-		        super( Booking.class.getName(), PROPERTIES, REFERENCES );
+		        super( Booking.class, PROPERTIES, REFERENCES );
 		    }
 		
 		}  

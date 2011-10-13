@@ -18,5 +18,24 @@ public class EmployeePO extends AbstractPO{
     public void setFirstName(String firstName){
         setPropertyValue( EmployeePOMD.FIRST_NAME, firstName );
     }
+    
+    
+    @Column(name = "last_name")
+    public String getLastName(){
+        return (String) getPropertyValue( EmployeePOMD.LAST_NAME );
+    }
+    
+    public void setLastName(String lastName) {
+        setPropertyValue( EmployeePOMD.LAST_NAME, lastName );
+    }
+    
+    @Column(name="age")
+    public int getAge(){
+        return (Integer) getPropertyValue( EmployeePOMD.AGE );
+    }
+    
+    public void setAge(int age){
+        setPropertyValue( EmployeePOMD.AGE, age );
+    }
 
 }

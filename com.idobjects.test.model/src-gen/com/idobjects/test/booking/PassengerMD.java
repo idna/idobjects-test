@@ -72,7 +72,7 @@
 		    }
 		
 		    private PassengerMD(){
-		        super( Passenger.class.getName(), PROPERTIES, REFERENCES );
+		        super( Passenger.class, PROPERTIES, REFERENCES );
 		    }
 		
 		}  

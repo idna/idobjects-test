@@ -47,7 +47,7 @@ public final class EmployeeMD extends IdObjectMD{
     }
 
     private EmployeeMD(){
-        super( Employee.class.getName(), PROPERTIES, REFERENCES );
+        super( Employee.class, PROPERTIES, REFERENCES );
     }
 
 }
