@@ -12,6 +12,7 @@ import com.idobjects.api.ModelScope;
 import com.idobjects.api.ModelScopeListener;
 import com.idobjects.api.StringModelScopeIdentifier;
 
+// Test Comment
 public class CompanyTest{
 
     private final Mockery context = new Mockery();
