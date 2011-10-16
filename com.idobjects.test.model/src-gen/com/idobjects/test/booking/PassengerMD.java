@@ -9,6 +9,10 @@
 		
 			import java.util.ArrayList;
 		
+			import com.idobjects.api.ModelScope;
+		
+			import com.idobjects.api.ObjectIdentifier;
+		
 			import com.idobjects.api.md.IdObjectMD;
 		
 			import com.idobjects.api.md.IdObjectPropertyMD;
@@ -73,6 +77,11 @@
 		
 		    private PassengerMD(){
 		        super( Passenger.class, PROPERTIES, REFERENCES );
+		    }
+		    
+		    
+		    public  Passenger createNewIdObject( ModelScope modelScope, ObjectIdentifier objectId){
+		    	return new Passenger(modelScope,objectId);
 		    }
 		
 		}  

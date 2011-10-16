@@ -1,4 +1,4 @@
-package com.idobjects.test.company.db;
+package com.idobjects.test.company.db.md;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 import com.idobjects.persistence.api.PersistenceModelMD;
 import com.idobjects.persistence.api.PersistenceObjectMD;
 import com.idobjects.test.company.CompanyModelMD;
+import com.idobjects.test.company.db.CompanyKeyPO;
+import com.idobjects.test.company.db.CompanyVersionPO;
 
 public final class CompanyPMD extends PersistenceModelMD{
 
@@ -19,7 +21,7 @@ public final class CompanyPMD extends PersistenceModelMD{
     }
 
     private CompanyPMD( List<PersistenceObjectMD> objects ){
-        super( CompanyModelMD.instance(), objects );
+        super( CompanyModelMD.instance(), CompanyKeyPO.class, CompanyVersionPO.class, "companyKey", objects );
     }
 
     public static CompanyPMD instance(){

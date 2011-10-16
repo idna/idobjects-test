@@ -1,5 +1,7 @@
 package com.idobjects.test.company;
 
+import static org.junit.Assert.assertTrue;
+
 import java.sql.DriverManager;
 import java.sql.Statement;
 
@@ -14,7 +16,7 @@ import com.idobjects.api.GuidObjectIdentifier;
 import com.idobjects.api.ModelScope;
 import com.idobjects.api.StringModelScopeIdentifier;
 import com.idobjects.persistence.api.PersistenceManagerImpl;
-import com.idobjects.test.company.db.CompanyPMD;
+import com.idobjects.test.company.db.md.CompanyPMD;
 import com.mysql.jdbc.Driver;
 
 public class CompanyDBTest{
@@ -71,6 +73,7 @@ public class CompanyDBTest{
         schemaUpdate.execute( false, true );
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
+
         PersistenceManagerImpl persistenceManagerImpl = new PersistenceManagerImpl( sessionFactory, CompanyPMD.instance() );
         ModelScope modelScope = new ModelScope( new StringModelScopeIdentifier( "MS1" ) );
         Employee employee = new Employee( modelScope, new GuidObjectIdentifier() );
@@ -90,6 +93,18 @@ public class CompanyDBTest{
         department.setName( "Department1" );
 
         persistenceManagerImpl.saveModelScope( modelScope );
+
+        Employee newEmployee = new Employee( modelScope, new GuidObjectIdentifier() );
+        newEmployee.setFirstName( "New First Name" );
+        newEmployee.setLastName( "New Last Name" );
+        newEmployee.setDepartment( department );
+        newEmployee.setAge( 15 );
+
+        persistenceManagerImpl.saveModelScope( modelScope );
+
+        ModelScope latestModelScope = persistenceManagerImpl.readLatestModelScope( modelScope.getId() );
+
+        assertTrue( modelScope.isEqualTo( latestModelScope ) );
 
     }
 }

@@ -1,4 +1,4 @@
-package com.idobjects.test.company.db;
+package com.idobjects.test.company.db.md;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,11 @@ import java.util.List;
 import com.idobjects.persistence.api.PersistenceObjectMD;
 import com.idobjects.persistence.api.PersistencePropertyMD;
 import com.idobjects.persistence.api.PersistenceReferenceMD;
-import com.idobjects.test.company.Employee;
 import com.idobjects.test.company.EmployeeMD;
+import com.idobjects.test.company.db.EmployeePO;
+import com.idobjects.test.company.db.EmployeeReferencePO;
+import com.idobjects.test.company.db.EmployeeReferenceVersionPO;
+import com.idobjects.test.company.db.EmployeeVersionPO;
 
 public class EmployeePOMD extends PersistenceObjectMD{
 
@@ -20,20 +23,33 @@ public class EmployeePOMD extends PersistenceObjectMD{
     private static final EmployeePOMD instance;
 
     static{
+        InitData initData = new InitData();
         List<PersistencePropertyMD> properties = new ArrayList<PersistencePropertyMD>();
         properties.add( FIRST_NAME );
         properties.add( LAST_NAME );
         properties.add( AGE );
+        initData.propertiesMD = properties;
 
         List<PersistenceReferenceMD> references = new ArrayList<PersistenceReferenceMD>();
         references.add( DEPARTMENT );
+        initData.referencesMD = references;
 
-        instance = new EmployeePOMD( Employee.class, EmployeePO.class, EmployeeReferencesPO.class, properties, references );
+        initData.idObjectMD = EmployeeMD.instance();
+        initData.persistenceObjectClass = EmployeePO.class;
+        initData.persistenceReferencesClass = EmployeeReferencePO.class;
+        initData.objectVersionClass = EmployeeVersionPO.class;
+        initData.referenceVersionClass = EmployeeReferenceVersionPO.class;
+
+        initData.entityField = "employee";
+        initData.entityReferenceField = "employeeReference";
+        initData.modelVersionField = "companyVersion";
+
+        instance = new EmployeePOMD( initData );
+
     }
 
-    private EmployeePOMD( Class idObjectClass, Class persistenceObjectClass, Class persistenceReferencesClass, List<PersistencePropertyMD> propertiesMD,
-            List<PersistenceReferenceMD> references ){
-        super( idObjectClass, persistenceObjectClass, persistenceReferencesClass, propertiesMD, references );
+    private EmployeePOMD( InitData initData ){
+        super( initData );
     }
 
     public static EmployeePOMD instance(){

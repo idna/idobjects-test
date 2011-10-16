@@ -1,5 +1,7 @@
 package com.idobjects.test.company;
 
+import static org.junit.Assert.assertEquals;
+
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Assert;
@@ -61,7 +63,7 @@ public class CompanyTest{
 
         Assert.assertEquals( department, employee.getDepartment() );
         Assert.assertEquals( 1, department.getMembers().size() );
-        Assert.assertEquals( employee, department.getMembers().get( 0 ) );
+        assertEquals( employee, department.getMembers().get( 0 ) );
 
         employee.removeDepartment();
         Assert.assertNull( employee.getDepartment() );

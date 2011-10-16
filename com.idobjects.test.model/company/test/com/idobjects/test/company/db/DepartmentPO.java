@@ -2,11 +2,13 @@ package com.idobjects.test.company.db;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
-import com.idobjects.persistence.api.AbstractPO;
+import com.idobjects.test.company.db.md.DepartmentPOMD;
 
 @Entity
-public class DepartmentPO extends AbstractPO{
+@Table(name = "department")
+public class DepartmentPO extends AbstractCompanyModelPO{
 
     public void setName( String name ){
         setPropertyValue( DepartmentPOMD.NAME, name );

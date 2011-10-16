@@ -1,4 +1,4 @@
-package com.idobjects.test.company.db;
+package com.idobjects.test.company.db.md;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,11 @@ import java.util.List;
 import com.idobjects.persistence.api.PersistenceObjectMD;
 import com.idobjects.persistence.api.PersistencePropertyMD;
 import com.idobjects.persistence.api.PersistenceReferenceMD;
-import com.idobjects.test.company.Department;
 import com.idobjects.test.company.DepartmentMD;
+import com.idobjects.test.company.db.DepartmentPO;
+import com.idobjects.test.company.db.DepartmentReferencePO;
+import com.idobjects.test.company.db.DepartmentReferenceVersionPO;
+import com.idobjects.test.company.db.DepartmentVersionPO;
 
 public class DepartmentPOMD extends PersistenceObjectMD{
 
@@ -22,20 +25,33 @@ public class DepartmentPOMD extends PersistenceObjectMD{
     private static final DepartmentPOMD instance;
 
     static{
+        InitData initData = new InitData();
         List<PersistencePropertyMD> properties = new ArrayList<PersistencePropertyMD>();
         properties.add( NAME );
         properties.add( SIZE );
+        initData.propertiesMD = properties;
 
         List<PersistenceReferenceMD> references = new ArrayList<PersistenceReferenceMD>();
         references.add( MEMBERS );
         references.add( BOSS );
+        initData.referencesMD = references;
 
-        instance = new DepartmentPOMD( Department.class, DepartmentPO.class, DepartmentReferencesPO.class, properties, references );
+        initData.idObjectMD = DepartmentMD.instance();
+        initData.persistenceObjectClass = DepartmentPO.class;
+        initData.persistenceReferencesClass = DepartmentReferencePO.class;
+        initData.objectVersionClass = DepartmentVersionPO.class;
+        initData.referenceVersionClass = DepartmentReferenceVersionPO.class;
+
+        initData.entityField = "department";
+        initData.entityReferenceField = "departmentReference";
+        initData.modelVersionField = "companyVersion";
+
+        instance = new DepartmentPOMD( initData );
+
     }
 
-    private DepartmentPOMD( Class idObjectClass, Class persistenceObjectClass, Class persistenceReferencesClass, List<PersistencePropertyMD> propertiesMD,
-            List<PersistenceReferenceMD> references ){
-        super( idObjectClass, persistenceObjectClass, persistenceReferencesClass, propertiesMD, references );
+    private DepartmentPOMD( InitData initData ){
+        super( initData );
     }
 
     public static DepartmentPOMD instance(){
